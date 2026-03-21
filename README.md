@@ -6,76 +6,17 @@
 <title>CJSM Pinturas</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-}
-
-header {
-    background: #1e3a8a;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-section {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-}
-
-.card {
-    background: white;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
-}
-
-h2 {
-    text-align: center;
-}
-
-input, button {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
-
-button {
-    background: #16a34a;
-    color: white;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.resultado {
-    margin-top: 10px;
-    font-size: 18px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.whatsapp {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
-    background: #25D366;
-    color: white;
-    padding: 12px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-footer {
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-    color: #555;
-}
+body {margin:0;font-family:Arial;background:#f4f4f4;}
+header {background:#1e3a8a;color:#fff;text-align:center;padding:20px;}
+.container {max-width:900px;margin:auto;padding:20px;}
+.card {background:#fff;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 0 10px #ccc;}
+h2{text-align:center;}
+input,select,textarea,button{width:100%;padding:12px;margin:8px 0;}
+button{background:#16a34a;color:#fff;border:none;font-size:16px;}
+.resultado{text-align:center;font-weight:bold;font-size:18px;}
+.whatsapp{display:block;text-align:center;background:#25D366;color:#fff;padding:12px;text-decoration:none;border-radius:8px;margin-top:10px;}
+.galeria img{width:100%;border-radius:10px;margin-top:10px;}
+.avaliacao{background:#eee;padding:10px;border-radius:8px;margin-top:10px;}
 </style>
 
 </head>
@@ -83,68 +24,103 @@ footer {
 <body>
 
 <header>
-    <h1>CJSM PINTURAS</h1>
-    <p>Profissionalismo e qualidade em pintura residencial e comercial</p>
+<h1>CJSM PINTURAS</h1>
+<p>Qualidade, confiança e acabamento profissional</p>
 </header>
 
-<section>
+<div class="container">
 
 <div class="card">
-    <h2>🎨 Faça seu orçamento online</h2>
+<h2>🎨 Faça seu orçamento</h2>
 
-    <input type="number" id="area" placeholder="Área (m²)">
-    <input type="number" id="preco" placeholder="Preço por m² (R$)">
-    <input type="number" id="preparacao" placeholder="Preparação (R$)">
-    <input type="number" id="extras" placeholder="Extras (R$)">
+<select id="servico">
+<option value="">Selecione o serviço</option>
+<option value="18">Pintura interna simples</option>
+<option value="25">Pintura padrão</option>
+<option value="35">Pintura externa</option>
+<option value="45">Pintura alto padrão</option>
+<option value="50">Textura / grafiato</option>
+<option value="40">Pintura de fachada</option>
+<option value="60">Pintura industrial / epóxi</option>
+</select>
 
-    <button onclick="calcular()">Calcular Orçamento</button>
+<input type="number" id="area" placeholder="Área (m²)">
 
-    <div class="resultado" id="resultado"></div>
+<button onclick="calcular()">Calcular Orçamento</button>
 
-    <a id="whatsapp" class="whatsapp" target="_blank">
-        Falar no WhatsApp
-    </a>
+<div class="resultado" id="resultado"></div>
 
-    <p style="text-align:center; font-size:12px; margin-top:10px;">
-        *Valor estimado — pode variar após avaliação no local.
-    </p>
+<a id="whatsapp" class="whatsapp" target="_blank">Falar no WhatsApp</a>
+
+<p style="font-size:12px;text-align:center;">
+*Valor estimado — pode variar após visita
+</p>
 </div>
 
 <div class="card">
-    <h2>📌 Sobre nós</h2>
-    <p>
-        A CJSM Pinturas oferece serviços profissionais com qualidade, rapidez e excelente acabamento.
-        Atendemos residências, comércios e galpões em toda a região.
-    </p>
+<h2>📸 Nossos serviços</h2>
+<div class="galeria">
+<img src="imagem1.jpg">
+<img src="imagem2.jpg">
+<img src="imagem3.jpg">
+</div>
 </div>
 
-</section>
+<div class="card">
+<h2>⭐ Avaliações</h2>
 
-<footer>
-    CJSM Pinturas - CNPJ: 60.956.057/0001-90
+<div id="listaAvaliacoes"></div>
+
+<input type="text" id="nome" placeholder="Seu nome">
+<textarea id="comentario" placeholder="Deixe sua avaliação"></textarea>
+
+<button onclick="avaliar()">Enviar Avaliação</button>
+
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:15px;">
+CJSM Pinturas - CNPJ: 60.956.057/0001-90
 </footer>
 
 <script>
-function calcular() {
-    let area = parseFloat(document.getElementById("area").value) || 0;
-    let preco = parseFloat(document.getElementById("preco").value) || 0;
-    let preparacao = parseFloat(document.getElementById("preparacao").value) || 0;
-    let extras = parseFloat(document.getElementById("extras").value) || 0;
+function calcular(){
+let preco=document.getElementById("servico").value;
+let area=document.getElementById("area").value;
 
-    let total = (area * preco) + preparacao + extras;
+if(preco==""||area==""){alert("Preencha tudo");return;}
 
-    document.getElementById("resultado").innerHTML =
-        "Valor estimado: R$ " + total.toFixed(2);
+let total=preco*area;
 
-    let mensagem = `Olá, fiz um orçamento no site CJSM Pinturas:
+document.getElementById("resultado").innerHTML="Valor: R$ "+total.toFixed(2);
+
+let textoServico=document.getElementById("servico").options[document.getElementById("servico").selectedIndex].text;
+
+let msg=`Olá, fiz um orçamento:
+Serviço: ${textoServico}
 Área: ${area}m²
-Valor estimado: R$ ${total.toFixed(2)}`;
+Valor: R$ ${total.toFixed(2)}`;
 
-    let numero = "5537999591572";
+let link="https://wa.me/5537999591572?text="+encodeURIComponent(msg);
 
-    let link = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
+document.getElementById("whatsapp").href=link;
+}
 
-    document.getElementById("whatsapp").href = link;
+function avaliar(){
+let nome=document.getElementById("nome").value;
+let comentario=document.getElementById("comentario").value;
+
+if(nome==""||comentario==""){alert("Preencha tudo");return;}
+
+let div=document.createElement("div");
+div.className="avaliacao";
+div.innerHTML="<b>"+nome+"</b><br>"+comentario;
+
+document.getElementById("listaAvaliacoes").appendChild(div);
+
+document.getElementById("nome").value="";
+document.getElementById("comentario").value="";
 }
 </script>
 
