@@ -1,166 +1,152 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CJSM PINTURAS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJSM Pinturas</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
 
-    header {
-      background: #0d47a1;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+header {
+    background: #1e3a8a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
+section {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
 
-    nav {
-      background: #1565c0;
-      padding: 10px;
-      text-align: center;
-    }
+.card {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+}
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+h2 {
+    text-align: center;
+}
 
-    .banner {
-      background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952') center/cover;
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
-    }
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+}
 
-    .banner h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
+button {
+    background: #16a34a;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    .btn {
-      background: #25d366;
-      color: white;
-      padding: 15px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+.resultado {
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
 
-    .container {
-      padding: 30px;
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-    }
+.whatsapp {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    background: #25D366;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
 
-    h2 {
-      color: #0d47a1;
-    }
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #555;
+}
+</style>
 
-    .servicos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .box {
-      background: #e3f2fd;
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-    footer {
-      background: #0d47a1;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    @media(max-width: 600px){
-      .servicos {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
 <header>
-  <h1>CJSM PINTURAS</h1>
-  <p>CNPJ: 00.000.000/0001-00</p>
+    <h1>CJSM PINTURAS</h1>
+    <p>Profissionalismo e qualidade em pintura residencial e comercial</p>
 </header>
 
-<nav>
-  <a href="#sobre">Sobre</a>
-  <a href="#servicos">Serviços</a>
-  <a href="#contato">Contato</a>
-</nav>
+<section>
 
-<section class="banner">
-  <h2>Pintura Profissional com Qualidade</h2>
-  <p>Residencial • Comercial • Industrial</p>
-  <a class="btn" href="https://wa.me/SEUNUMEROAQUI">Solicitar Orçamento</a>
+<div class="card">
+    <h2>🎨 Faça seu orçamento online</h2>
+
+    <input type="number" id="area" placeholder="Área (m²)">
+    <input type="number" id="preco" placeholder="Preço por m² (R$)">
+    <input type="number" id="preparacao" placeholder="Preparação (R$)">
+    <input type="number" id="extras" placeholder="Extras (R$)">
+
+    <button onclick="calcular()">Calcular Orçamento</button>
+
+    <div class="resultado" id="resultado"></div>
+
+    <a id="whatsapp" class="whatsapp" target="_blank">
+        Falar no WhatsApp
+    </a>
+
+    <p style="text-align:center; font-size:12px; margin-top:10px;">
+        *Valor estimado — pode variar após avaliação no local.
+    </p>
+</div>
+
+<div class="card">
+    <h2>📌 Sobre nós</h2>
+    <p>
+        A CJSM Pinturas oferece serviços profissionais com qualidade, rapidez e excelente acabamento.
+        Atendemos residências, comércios e galpões em toda a região.
+    </p>
+</div>
+
 </section>
 
-<div class="container" id="sobre">
-  <h2>Sobre Nós</h2>
-  <p>
-    A CJSM PINTURAS é especializada em serviços de pintura de alta qualidade,
-    garantindo acabamento profissional, rapidez e preço justo.
-  </p>
-</div>
-
-<div class="container" id="servicos">
-  <h2>Nossos Serviços</h2>
-
-  <div class="servicos">
-    <div class="box">
-      <h3>Pintura Residencial</h3>
-      <p>Casas, apartamentos e reformas em geral.</p>
-    </div>
-
-    <div class="box">
-      <h3>Pintura Comercial</h3>
-      <p>Lojas, escritórios e galpões.</p>
-    </div>
-
-    <div class="box">
-      <h3>Pintura Industrial</h3>
-      <p>Galpões e estruturas metálicas.</p>
-    </div>
-
-    <div class="box">
-      <h3>Acabamento Fino</h3>
-      <p>Detalhes que valorizam seu imóvel.</p>
-    </div>
-  </div>
-</div>
-
-<div class="container" id="contato">
-  <h2>Contato</h2>
-  <p>📞 WhatsApp: (31) 00000-0000</p>
-  <p>📍 Minas Gerais</p>
-</div>
-
 <footer>
-  <p>© 2026 CJSM PINTURAS - Todos os direitos reservados</p>
+    CJSM Pinturas - CNPJ: 60.956.057/0001-90
 </footer>
+
+<script>
+function calcular() {
+    let area = parseFloat(document.getElementById("area").value) || 0;
+    let preco = parseFloat(document.getElementById("preco").value) || 0;
+    let preparacao = parseFloat(document.getElementById("preparacao").value) || 0;
+    let extras = parseFloat(document.getElementById("extras").value) || 0;
+
+    let total = (area * preco) + preparacao + extras;
+
+    document.getElementById("resultado").innerHTML =
+        "Valor estimado: R$ " + total.toFixed(2);
+
+    let mensagem = `Olá, fiz um orçamento no site CJSM Pinturas:
+Área: ${area}m²
+Valor estimado: R$ ${total.toFixed(2)}`;
+
+    let numero = "5537999591572";
+
+    let link = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
+
+    document.getElementById("whatsapp").href = link;
+}
+</script>
 
 </body>
 </html>
