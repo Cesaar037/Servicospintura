@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pintor em Pompéu MG | CJSM Pinturas</title>
+
+<meta name="description" content="CJSM Pinturas - Pintor profissional em Pompéu MG. Pintura residencial, comercial, fachadas, grafiato e acabamento de qualidade. Solicite seu orçamento!">
+
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#f5f7fa;
+}
+
+.header {
+  background: linear-gradient(135deg,#0f2027,#2c5364);
+  color:white;
+  padding:25px 15px;
+  text-align:center;
+}
+
+.logo {
+  font-size:26px;
+  font-weight:bold;
+}
+
+.logo span {
+  color:#25D366;
+}
+
+.sub {
+  font-size:14px;
+  margin-top:5px;
+}
+
+.btn-main {
+  display:block;
+  background:#25D366;
+  color:white;
+  padding:12px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.container {
+  padding:15px;
+}
+
+.card {
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:15px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.resultado {
+  margin-top:10px;
+  font-size:18px;
+  font-weight:bold;
+  color:#28a745;
+}
+
+.alerta {
+  font-size:12px;
+  color:#777;
+  margin-top:5px;
+}
+
+input, select, button {
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+button {
+  background:#28a745;
+  color:white;
+  font-weight:bold;
+  border:none;
+}
+
+.float {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  text-align:center;
+  line-height:60px;
+  font-size:28px;
+  text-decoration:none;
+}
+
+footer {
+  text-align:center;
+  padding:15px;
+  font-size:12px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="logo">CJSM <span>PINTURAS</span></div>
+  <div class="sub">Pintor profissional em Pompéu MG</div>
+  <a href="https://wa.me/5537999591572" class="btn-main">📲 Falar no WhatsApp</a>
+</div>
+
+<div class="container">
+
+<div class="card">
+  <h3>Pintor em Pompéu MG</h3>
+  <p>
+  A CJSM Pinturas é especializada em pintura residencial e comercial em Pompéu MG.
+  Trabalhamos com acabamento profissional, pintura interna, externa, grafiato, fachadas e reformas em geral.
+  Solicite seu orçamento rápido e sem compromisso!
+  </p>
+</div>
+
+<div class="card">
+  <h3>Serviços</h3>
+  <ul>
+    <li>Pintura residencial e comercial</li>
+    <li>Fachadas e alto padrão</li>
+    <li>Massa corrida e acabamento</li>
+    <li>Textura e grafiato</li>
+    <li>Pintura e verniz em madeira</li>
+    <li>Lavagem e pintura de telhados</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Solicite seu orçamento</h3>
+
+  <input type="text" id="nome" placeholder="Seu nome">
+
+  <select id="servico">
+    <option value="18">Pintura interna</option>
+    <option value="25">Pintura externa</option>
+    <option value="35">Fachada</option>
+    <option value="20">Massa corrida</option>
+    <option value="40">Alto padrão</option>
+    <option value="45">Textura/Grafiato</option>
+    <option value="100">Pintura de portas</option>
+    <option value="180">Verniz portas</option>
+    <option value="15">Lavagem de telhado</option>
+    <option value="45">Verniz madeira/telhado</option>
+  </select>
+
+  <select id="nivel">
+    <option value="1">Simples</option>
+    <option value="1.3">Médio</option>
+    <option value="1.6">Alto padrão</option>
+  </select>
+
+  <input type="number" id="metragem" placeholder="M² ou quantidade">
+
+  <button onclick="calcular()">Calcular orçamento</button>
+
+  <div id="resultado" class="resultado"></div>
+  <div class="alerta">*Valor estimado. Pode variar após visita técnica.</div>
+
+  <button onclick="enviarWhatsApp()" style="background:#25D366;margin-top:10px;">
+    📲 Enviar no WhatsApp
+  </button>
+</div>
+
+</div>
+
+<footer>
+© 2026 CJSM Pinturas - Pintor em Pompéu MG
+</footer>
+
+<a href="https://wa.me/5537999591572" class="float">💬</a>
+
+<script>
+function calcular(){
+  let nome = document.getElementById("nome").value;
+  let servico = document.getElementById("servico");
+  let texto = servico.options[servico.selectedIndex].text;
+  let valor = servico.value;
+  let nivel = document.getElementById("nivel").value;
+  let metragem = document.getElementById("metragem").value;
+
+  if(nome==""||metragem==""){
+    alert("Preencha os dados!");
+    return;
+  }
+
+  let total = valor * metragem * nivel;
+
+  document.getElementById("resultado").innerHTML =
+  "💰 Valor estimado: R$ "+total.toFixed(2);
+
+  window.dados = {nome,texto,metragem,total};
+}
+
+function enviarWhatsApp(){
+  if(!window.dados){
+    alert("Calcule primeiro!");
+    return;
+  }
+
+  let msg = `Olá, meu nome é ${window.dados.nome}.\n\nServiço: ${window.dados.texto}\nQuantidade: ${window.dados.metragem}\nValor estimado: R$ ${window.dados.total.toFixed(2)}\n\nGostaria de um orçamento detalhado.`;
+
+  window.open("https://wa.me/5537999591572?text="+encodeURIComponent(msg));
+}
+</script>
+
+</body>
+</html>
